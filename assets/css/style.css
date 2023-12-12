@@ -4,7 +4,27 @@
   box-sizing: border-box;
 }
 
-html,
+/* GENERAL STYLES */
+.row, .column{
+  display: flex;
+}
+.row{
+  flex-direction: row;
+}
+.column{
+  flex-direction: column;}
+
+.flex-one{
+  flex:1;
+}
+
+input{
+  margin:0 5px;
+}
+form{
+  padding:30px;
+}
+columnhtml,
 body,
 .wrapper {
   height: 100%;

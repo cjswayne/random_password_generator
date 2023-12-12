@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Password Generator</title>
+    <title>Random Password Generator</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
+
   <body>
     <div class="wrapper">
       <header>
@@ -16,6 +17,39 @@
         <div class="card-header">
           <h2>Generate a Password</h2>
         </div>
+        <!-- /* 
+          Function to generate random password
+            Inputs needed: 
+              - Length of password(integer 8-128char) -- range or input box?
+              - Checkboxes
+                - Lowercase Char (tf) 
+                - Uppercase Char (tf)
+                - Numeric Char (tf)
+                - Special Char (tf)
+        */ -->
+        <form action="" name="password-generator" class="">
+          <div class="column">
+            <label class="flex-one" for="password-length">Password Length:<input type="number" id="password-length" name="password-length" min="8" max="128" value="44"></label>
+            <h3>Include Characters:</h3>
+            <div class="row flex-one">
+              <label for="include-lowercase">Lowercase
+                <input type="checkbox" id="include-lowercase" name="include-lowercase" checked>
+             </label>
+  
+             <label for="include-uppercase">Uppercase
+               <input type="checkbox" id="include-uppercase" name="include-uppercase" checked>
+             </label>
+             
+             <label for="include-numbers">Numbers
+               <input type="checkbox" id="include-numbers" name="include-numbers" checked>
+             </label>
+  
+             <label for="include-special">Special
+               <input type="checkbox" id="include-special" name="include-special" checked>
+             </label>
+            </div>
+          </div>
+        </form>
         <div class="card-body">
           <textarea
             readonly

@@ -14,6 +14,7 @@ Function to generate random password
 */
 
 function randomPasswordGenerator(length, includeLower, includeUpper, includeNumbers, includeSpecial){
+  
   const lowerChars = "abcdefghijklmnopqrstuvwxyz";
   const upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const numberChars = "0123456789";
@@ -40,6 +41,7 @@ function randomPasswordGenerator(length, includeLower, includeUpper, includeNumb
   randomPassword += includeNumbers ? numberChars[Math.floor(Math.random() * numberChars.length)]: '';
   randomPassword += includeSpecial ? specialChars[Math.floor(Math.random() * specialChars.length)]: '';
 
+
   // Build password with random characters
   for (let i = randomPassword.length; i < length; i++){
     randomPassword += possibleChars[Math.floor(Math.random() * possibleChars.length)];
@@ -47,7 +49,6 @@ function randomPasswordGenerator(length, includeLower, includeUpper, includeNumb
 
   //Shuffle once more to ensure randomness
   randomPassword = randomPassword.split('').sort(() => 0.5 - Math.random()).join(''); 
-
   return randomPassword;
 }
 
@@ -63,9 +64,22 @@ function writePassword() {
 
 
 // Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
+document.addEventListener('DOMContentLoaded', function(){
+  var myForm = document.forms['password-generator'];
+  console.log(myForm);
+  var generateBtn = document.querySelector("#generate");
+  var length = myForm.elements['password-length'];
+  var includeLowercase = myForm.elements['include-lowercase'];
+  var includeUppercase = myForm.elements['include-uppercase'];
+  var includeNumbers = myForm.elements['include-numbers'];
+  var includeSpecial = myForm.elements['include-special'];
+
+  generateBtn.addEventListener("click", function() {
+    console.log(`Your Password is: ${randomPasswordGenerator(length.value, includeLowercase.checked, includeUppercase.checked, includeNumbers.checked, includeSpecial.checked)}`)
+  });
+});
+
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
 
-console.log(randomPasswordGenerator(37, true, true, true, false));
+//console.log(randomPasswordGenerator(37, true, true, true, false));

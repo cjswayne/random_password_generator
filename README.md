@@ -1,7 +1,7 @@
 # random_password_generator
 
 ## Description
-In this project I refactored code that was given to me. The purpose of the project is to make a tool to generate a random password based on a set of criterion. I updated the form to include inputs for password length, lowercase characters, uppercase characters, special characters and numbers. I also wrote javascript functions to take those inputs and create a random password based off of those inputs. 
+In this project I refactored code that was given to me. The purpose of the project is to refactor the the code given to generate a random password based on a set of criterion. I updated the form to include inputs for password length, lowercase characters, uppercase characters, special characters and numbers. I also wrote javascript functions to take those inputs and create a random password based off of those inputs when the user presses the "Generate Password" button. 
 
 ## Repository
 

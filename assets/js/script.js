@@ -1,85 +1,89 @@
-// FUNCTIONS
+// Function to generate a randomness
+function randomPasswordGenerator(length, includeLower, includeUpper, includeNumbers, includeSpecial) {
 
-
-
-/* 
-Function to generate random password
-  Inputs needed: 
-    - Length of password(integer 8-128char) -- range or input box?
-    - Checkboxes
-      - Lowercase Char (tf) 
-      - Uppercase Char (tf)
-      - Numeric Char (tf)
-      - Special Char (tf)
-*/
-
-function randomPasswordGenerator(length, includeLower, includeUpper, includeNumbers, includeSpecial){
-  
   const lowerChars = "abcdefghijklmnopqrstuvwxyz";
   const upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const numberChars = "0123456789";
-  const specialChars = "!@#\\$%^&*()_+~`|}{[]:;?><,./-="; // needs to be reviewed for characters js identifies 
+  const specialChars = "!@#\\$%^&*()_+~`|}{[]:;?><,./-=";
 
   //Validate length
 
-  if (length < 8 || length > 128){
-    throw new Error("Password must be between 8 and 128 characters.")
-  }
+  if (length < 8 || length > 128) {
+    return alert("Password must be between 8 and 128 characters.")
+  } else if (!includeLower && !includeUpper && !includeNumbers && !includeSpecial) {
+    return alert('no characters selected')
+  };
 
-  //Build a string of possible characters for the pass
+  // Create object containing characters needed
+
+  const charSets = {
+    lower: includeLower ? lowerChars : '',
+    upper: includeUpper ? upperChars : '',
+    numbers: includeNumbers ? numberChars : '',
+    special: includeSpecial ? specialChars : '',
+  };
+
+  // Make sure the password has at least one character of user selected characters
   let possibleChars = '';
-  possibleChars += includeLower ? lowerChars: '';
-  possibleChars += includeUpper ? upperChars: '';
-  possibleChars += includeNumbers ? numberChars: '';
-  possibleChars += includeSpecial ? specialChars: '';
-
-
-  // Make sure there is at least one character from selected criteria
   let randomPassword = '';
-  randomPassword += includeLower ? lowerChars[Math.floor(Math.random() * lowerChars.length)]: '';
-  randomPassword += includeUpper ? upperChars[Math.floor(Math.random() * upperChars.length)]: '';
-  randomPassword += includeNumbers ? numberChars[Math.floor(Math.random() * numberChars.length)]: '';
-  randomPassword += includeSpecial ? specialChars[Math.floor(Math.random() * specialChars.length)]: '';
-
+  for (const [key, value] of Object.entries(charSets)) {
+    possibleChars += value;
+    if (value) {
+      randomPassword += value[Math.floor(Math.random() * value.length)];
+    };
+  }
 
   // Build password with random characters
-  for (let i = randomPassword.length; i < length; i++){
-    randomPassword += possibleChars[Math.floor(Math.random() * possibleChars.length)];
-  }
+  const remainingLength = length - randomPassword.length;
+  const randomChars = Array.from({ length: remainingLength }, () => possibleChars[Math.floor(Math.random() * possibleChars.length)]);
+  randomPassword += randomChars.join('');
 
-  //Shuffle once more to ensure randomness
-  randomPassword = randomPassword.split('').sort(() => 0.5 - Math.random()).join(''); 
+  // Shuffle Password To ensure randomness
+  randomPassword = shuffleString(randomPassword);
+
   return randomPassword;
 }
 
-// Function to display generated password
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
+// Function to Ensure non-biased randomness
+function fisherYatesShuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]
+  }
 }
 
+// Function to shuffle string
+function shuffleString(str) {
+  const array = str.split('');
+  fisherYatesShuffle(array);
+  return array.join('');
+}
 
+// Function to display generated password
+function writePassword(password) {
+  if (password != undefined) {
+    var passwordText = document.querySelector("#password");
+    passwordText.value = password;
+  };
+}
+
+// Function to clear Password
+function clearPassword() {
+  var passwordText = document.querySelector("#password");
+  passwordText.value = "";
+}
 
 // Get references to the #generate element
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function () {
   var myForm = document.forms['password-generator'];
-  console.log(myForm);
   var generateBtn = document.querySelector("#generate");
   var length = myForm.elements['password-length'];
   var includeLowercase = myForm.elements['include-lowercase'];
   var includeUppercase = myForm.elements['include-uppercase'];
   var includeNumbers = myForm.elements['include-numbers'];
   var includeSpecial = myForm.elements['include-special'];
-
-  generateBtn.addEventListener("click", function() {
-    console.log(`Your Password is: ${randomPasswordGenerator(length.value, includeLowercase.checked, includeUppercase.checked, includeNumbers.checked, includeSpecial.checked)}`)
+  generateBtn.addEventListener("click", function () {
+    clearPassword();
+    writePassword(randomPasswordGenerator(length.value, includeLowercase.checked, includeUppercase.checked, includeNumbers.checked, includeSpecial.checked));
   });
 });
-
-
-// Add event listener to generate button
-
-//console.log(randomPasswordGenerator(37, true, true, true, false));

@@ -1,68 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Random Password Generator</title>
-    <link rel="stylesheet" href="./assets/css/style.css" />
-  </head>
 
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Password Generator</h1>
-      </header>
-      <div class="card">
-        <div class="card-header">
-          <h2>Generate a Password</h2>
-        </div>
-        <!-- /* 
-          Function to generate random password
-            Inputs needed: 
-              - Length of password(integer 8-128char) -- range or input box?
-              - Checkboxes
-                - Lowercase Char (tf) 
-                - Uppercase Char (tf)
-                - Numeric Char (tf)
-                - Special Char (tf)
-        */ -->
-        <form action="" name="password-generator" class="">
-          <div class="column">
-            <label class="flex-one" for="password-length">Password Length:<input type="number" id="password-length" name="password-length" min="8" max="128" value="44"></label>
-            <h3>Include Characters:</h3>
-            <div class="row flex-one">
-              <label for="include-lowercase">Lowercase
-                <input type="checkbox" id="include-lowercase" name="include-lowercase" checked>
-             </label>
-  
-             <label for="include-uppercase">Uppercase
-               <input type="checkbox" id="include-uppercase" name="include-uppercase" checked>
-             </label>
-             
-             <label for="include-numbers">Numbers
-               <input type="checkbox" id="include-numbers" name="include-numbers" checked>
-             </label>
-  
-             <label for="include-special">Special
-               <input type="checkbox" id="include-special" name="include-special" checked>
-             </label>
-            </div>
-          </div>
-        </form>
-        <div class="card-body">
-          <textarea
-            readonly
-            id="password"
-            placeholder="Your Secure Password"
-            aria-label="Generated Password"
-          ></textarea>
-        </div>
-        <div class="card-footer">
-          <button id="generate" class="btn">Generate Password</button>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Random Password Generator</title>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <h1>Password Generator</h1>
+    </header>
+    <div class="card">
+      <div class="card-header">
+        <h2>Generate a Password</h2>
+      </div>
+      <form action="" name="password-generator" class="column">
+          <h3>Include Characters:</h3>
+          <label for="include-lowercase">
+            <input type="checkbox" id="include-lowercase" name="include-lowercase" checked>
+            Lowercase
+          </label>
+
+          <label for="include-uppercase">
+            <input type="checkbox" id="include-uppercase" name="include-uppercase" checked>
+            Uppercase
+          </label>
+
+          <label for="include-numbers">
+            <input type="checkbox" id="include-numbers" name="include-numbers" checked>
+            Numbers
+          </label>
+
+          <label for="include-special">
+            <input type="checkbox" id="include-special" name="include-special" checked>
+            Special
+          </label>
+          <br>
+          <label class="flex-one" for="password-length">Password Length:<input type="number" id="password-length"
+              name="password-length" min="8" max="128" value="32"></label>
+      </form>
+      <div class="card-body">
+        <textarea readonly id="password" placeholder="Your Secure Password" aria-label="Generated Password"></textarea>
+      </div>
+      <div class="card-footer">
+        <button id="generate" class="btn">Generate Password</button>
       </div>
     </div>
-    <script src="./assets/js/script.js"></script>
-  </body>
+  </div>
+  <script src="./assets/js/script.js"></script>
+</body>
+
 </html>

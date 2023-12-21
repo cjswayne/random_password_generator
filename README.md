@@ -12,7 +12,7 @@ Link to deployed code: [https://cjswayne.github.io/random_password_generator/](h
 - The random password generation logic utilizes the fisherYatesShuffle formula, which makes an unbiased randomized string
 
 ## Mockup
-![](./assets/images/127.0.0.1_5500_.png)
+![](./assets//images/cjswayne.github.io_random_password_generator_.png)
 
 ## Credits 
 I used resources provided by the Rutgers University Bootcamp Course.

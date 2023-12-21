@@ -6,7 +6,7 @@ function randomPasswordGenerator(length, includeLower, includeUpper, includeNumb
   const numberChars = "0123456789";
   const specialChars = "!@#\\$%^&*()_+~`|}{[]:;?><,./-=";
 
-  //Validate length
+  // Validate length
 
   if (length < 8 || length > 128) {
     return alert("Password must be between 8 and 128 characters.")
@@ -73,22 +73,11 @@ function clearPassword() {
   passwordText.value = "";
 }
 
-// function to ask prompts
-
-
-
 // Get references to the #generate element
 document.addEventListener('DOMContentLoaded', function () {
-  // var myForm = document.forms['password-generator'];
   var generateBtn = document.querySelector("#generate");
-  // var length = myForm.elements['password-length'];
-  // var includeLowercase = myForm.elements['include-lowercase'];
-  // var includeUppercase = myForm.elements['include-uppercase'];
-  // var includeNumbers = myForm.elements['include-numbers'];
-  // var includeSpecial = myForm.elements['include-special'];
   generateBtn.addEventListener("click", function () {
     clearPassword();
     writePassword(randomPasswordGenerator( prompt('Choose a password length'), confirm('Include Lowercase Characters?'), confirm('Include Uppercase Characters?'),  confirm('Include Numbers?'), confirm('Includer Special Characters?')));
   });
-
 });

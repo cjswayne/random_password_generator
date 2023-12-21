@@ -1,4 +1,4 @@
-// Function to generate a randomness
+// Function to generate a randomn password
 function randomPasswordGenerator(length, includeLower, includeUpper, includeNumbers, includeSpecial) {
 
   const lowerChars = "abcdefghijklmnopqrstuvwxyz";
@@ -73,17 +73,22 @@ function clearPassword() {
   passwordText.value = "";
 }
 
+// function to ask prompts
+
+
+
 // Get references to the #generate element
 document.addEventListener('DOMContentLoaded', function () {
-  var myForm = document.forms['password-generator'];
+  // var myForm = document.forms['password-generator'];
   var generateBtn = document.querySelector("#generate");
-  var length = myForm.elements['password-length'];
-  var includeLowercase = myForm.elements['include-lowercase'];
-  var includeUppercase = myForm.elements['include-uppercase'];
-  var includeNumbers = myForm.elements['include-numbers'];
-  var includeSpecial = myForm.elements['include-special'];
+  // var length = myForm.elements['password-length'];
+  // var includeLowercase = myForm.elements['include-lowercase'];
+  // var includeUppercase = myForm.elements['include-uppercase'];
+  // var includeNumbers = myForm.elements['include-numbers'];
+  // var includeSpecial = myForm.elements['include-special'];
   generateBtn.addEventListener("click", function () {
     clearPassword();
-    writePassword(randomPasswordGenerator(length.value, includeLowercase.checked, includeUppercase.checked, includeNumbers.checked, includeSpecial.checked));
+    writePassword(randomPasswordGenerator( prompt('Choose a password length'), confirm('Include Lowercase Characters?'), confirm('Include Uppercase Characters?'),  confirm('Include Numbers?'), confirm('Includer Special Characters?')));
   });
+
 });
